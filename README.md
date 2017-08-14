@@ -2,10 +2,10 @@
 
 Golang implementation of the Axia protocol.
 
-## CLI
+## Description
 
-The following commands are available:
+The Axia protocol is composed of three sub-protocols:
 
-```go
-axia help
-```
+- Network
+- Validation
+- Consensus
