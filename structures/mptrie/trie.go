@@ -1,6 +1,5 @@
-package trie
+package mptrie
 
-// MPTrie is a modified Merkle-Patricia Trie as in Ethereum
-//
+// MPTrie is a modified Merkle-Patricia Trie as used in Ethereum
 type MPTrie struct {
 }
