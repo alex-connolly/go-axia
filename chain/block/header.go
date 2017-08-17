@@ -12,3 +12,6 @@ type Header interface {
 	Root() axia.Hash
 	Time() *big.Int
 }
+
+type AxiaHeader struct {
+}

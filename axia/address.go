@@ -34,18 +34,6 @@ func BigToAddress(b *big.Int) Address { return BytesToAddress(b.Bytes()) }
 // HexToAddress string ==> Address
 func HexToAddress(s string) Address { return BytesToAddress(FromHex(s)) }
 
-// IsHexAddress verifies whether a string can represent a valid hex-encoded
-// Ethereum address or not.
-func IsHexAddress(s string) bool {
-	if len(s) == 2+2*addressLength && IsHex(s) {
-		return true
-	}
-	if len(s) == 2*addressLength && IsHex("0x"+s) {
-		return true
-	}
-	return false
-}
-
 // Str form of Address
 func (a Address) Str() string { return string(a[:]) }
 
@@ -54,9 +42,6 @@ func (a Address) Bytes() []byte { return a[:] }
 
 // Big Integer form of Address
 func (a Address) Big() *big.Int { return new(big.Int).SetBytes(a[:]) }
-
-// Hash form of Address
-func (a Address) Hash() Hash { return BytesToHash(a[:]) }
 
 // Hex returns an EIP55-compliant hex string representation of the address.
 func (a Address) Hex() string {
@@ -107,19 +92,4 @@ func (a *Address) Set(other Address) {
 	for i, v := range other {
 		a[i] = v
 	}
-}
-
-// MarshalText returns the hex representation of a.
-func (a Address) MarshalText() ([]byte, error) {
-	return hexutil.Bytes(a[:]).MarshalText()
-}
-
-// UnmarshalText parses a hash in hex syntax.
-func (a *Address) UnmarshalText(input []byte) error {
-	return hexutil.UnmarshalFixedText("Address", input, a[:])
-}
-
-// UnmarshalJSON parses a hash in hex syntax.
-func (a *Address) UnmarshalJSON(input []byte) error {
-	return hexutil.UnmarshalFixedJSON(addressT, input, a[:])
 }
