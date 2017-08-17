@@ -6,6 +6,6 @@ type Protocol interface {
 }
 
 // Staxia = proof of STAke AXIA
-// utterly horrific
+// utterly horrific naming
 type Staxia struct {
 }
